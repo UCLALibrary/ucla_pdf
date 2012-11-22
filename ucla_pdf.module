@@ -74,7 +74,9 @@ function ucla_pdf_islandora_content_model_forms_form_associations() {
  * Add in islandora:sp_pdf, so it gets handled in largely the same way.
  */
 function ucla_pdf_ucla_TahrirPdfCModel_islandora_ingest_pre_ingest($obj, $cm, $col) {
-  $obj->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:sp_pdf');
+  if (!in_array('islandora:sp_pdf', $obj->models)) {
+    $obj->models = 'islandora:sp_pdf';
+  }
 }
 
 
